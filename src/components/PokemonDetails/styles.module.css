@@ -36,3 +36,16 @@
     align-items: center;
     gap: 2rem;
 }
+
+.typesContainer {
+    background-color: var(--gray-800);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+
+}
+
+.typesContainer h4 {
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}

@@ -6,6 +6,9 @@ import useDebounce from "../../Hooks/useDebounce";
 interface PokemonDataType {
     id: number,
     name: string,
+    types?: [{
+        type: { name: string }
+    }],
     sprites?: {
         other: {
             dream_world: {
@@ -70,6 +73,15 @@ export function PokemonDetails() {
                     { (isLoading && pokemonNumber.length > 0) && <h1>Carregando...</h1> }
 
                     <h1>{pokemonData?.name}</h1>
+                    
+                    {
+                        pokemonData && 
+                        <div className={styles.typesContainer}>
+                            <h4>Types:</h4>
+                            {pokemonData.types?.map((type, index) => <p key={index}>{type.type.name}</p>)}
+                        </div>
+                    }
+
                     <img src={pokemonData?.sprites?.other.dream_world.front_default} alt="" />
                     
                 </div>
