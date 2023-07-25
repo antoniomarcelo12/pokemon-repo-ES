@@ -66,7 +66,7 @@ export function PokemonDetails() {
         <div className={styles.pokemonDetailsContainer}>
             <div className={styles.pokemonIndividualCard}>
                 <div className={styles.PokemonDetailsForm}>
-                    <label htmlFor="pokemon">Digite o número do primeiro pokemon desejado:</label>
+                    <label htmlFor="pokemon">Digite o número do pokemon desejado:</label>
                     <input type="number" id="pokemon" onChange={(e) => setPokemonNumber(e.target.value)} />
                 </div>
                 <div className={styles.pokemonDetailsContent}>
@@ -75,7 +75,7 @@ export function PokemonDetails() {
                     <h1>{pokemonData?.name}</h1>
                     
                     {
-                        pokemonData && 
+                        pokemonData && pokemonData.name !== 'Not found' &&
                         <div className={styles.typesContainer}>
                             <h4>Types:</h4>
                             {pokemonData.types?.map((type, index) => <p key={index}>{type.type.name}</p>)}

@@ -8,13 +8,13 @@ interface PokemonType {
 }
 
 export function PokemonList() {
-    let offset = -10
+    let offset = -20
 
     const [isLoading, setIsLoading] = useState(false)
     const [allPokemons, setAllPokemons] = useState<string[]>([])
     
-    const getPokemon = async () => {
-        offset += 10
+    function getPokemon() {
+        offset += 20
         axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${offset}`)
             .then(({data}) => {
                 const newPokemons: string[] = []
