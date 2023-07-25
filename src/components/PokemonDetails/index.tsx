@@ -33,7 +33,6 @@ export function PokemonDetails() {
         setReloadComponent(!reloadComponent)
     }
     
-
     useEffect(() => {
         const getPokemon = async () => {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${debouncedSearch}`)
@@ -54,8 +53,6 @@ export function PokemonDetails() {
     useEffect(() => {
         if(pokemonNumber.length > 0) {
             setIsLoading(true)
-            setPokemonData(null)
-        }else {
             setPokemonData(null)
         }
     }, [pokemonNumber])

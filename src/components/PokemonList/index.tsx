@@ -11,7 +11,6 @@ export function PokemonList() {
     let offset = -10
 
     const [isLoading, setIsLoading] = useState(false)
-
     const [allPokemons, setAllPokemons] = useState<string[]>([])
     
     const getPokemon = async () => {
@@ -25,8 +24,8 @@ export function PokemonList() {
                 setIsLoading(false)
                 
             },
-            () => {
-                console.log("ERRO")
+            (err) => {
+                console.log("Erro ao buscar pokémons: ", err)
                 setIsLoading(false)
             })
 
@@ -42,7 +41,6 @@ export function PokemonList() {
     useEffect(() => {
         getPokemon()
         window.addEventListener('scroll', handleScroll)
-        
     }, []);
 
     
