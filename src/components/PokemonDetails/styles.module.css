@@ -1,15 +1,23 @@
 .pokemonDetailsContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 4rem;
-
     color: #fff;
     background-color: var(--gray-700);
     padding: 2rem;
     border-radius: 8px;
     margin: 0 1.5rem;
+}
+
+.pokemonIndividualCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemonIndividualCard button {
+    margin: 3rem 0 0 0;
 }
 
 .pokemonDetailsContent {

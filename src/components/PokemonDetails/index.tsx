@@ -32,20 +32,20 @@ export function PokemonDetails() {
     function handleReloadComponent() {
         setReloadComponent(!reloadComponent)
     }
+
+    const getPokemon = async () => {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${debouncedSearch}`)
+            .then((data) => {
+                setPokemonData(data.data)
+                setIsLoading(false)
+            },
+            () => {
+                setPokemonData(PokemonNotFound)
+                setIsLoading(false)
+            })
+    };
     
     useEffect(() => {
-        const getPokemon = async () => {
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${debouncedSearch}`)
-                .then((data) => {
-                    setPokemonData(data.data)
-                    setIsLoading(false)
-                },
-                () => {
-                    setPokemonData(PokemonNotFound)
-                    setIsLoading(false)
-                })
-        };
-    
         debouncedSearch ? getPokemon() : null;
     }, [debouncedSearch, reloadComponent]);
     
@@ -59,24 +59,47 @@ export function PokemonDetails() {
 
     return(
         <div className={styles.pokemonDetailsContainer}>
-            <div className={styles.PokemonDetailsForm}>
-                <label htmlFor="pokemon">Digite o número do pokemon desejado:</label>
-                <input type="number" id="pokemon" onChange={(e) => setPokemonNumber(e.target.value)} />
-            </div>
-            <div className={styles.pokemonDetailsContent}>
-                {   
-                    (isLoading && pokemonNumber.length > 0) && <h1>Carregando...</h1>
-                }
+            <div className={styles.pokemonIndividualCard}>
+                <div className={styles.PokemonDetailsForm}>
+                    <label htmlFor="pokemon">Digite o número do primeiro pokemon desejado:</label>
+                    <input type="number" id="pokemon" onChange={(e) => setPokemonNumber(e.target.value)} />
+                </div>
+                <div className={styles.pokemonDetailsContent}>
+                    {   
+                        (isLoading && pokemonNumber.length > 0) && <h1>Carregando...</h1>
+                    }
 
+                    
+                    <h1>{pokemonData?.name}</h1>
+                    <img src={pokemonData?.sprites?.other.dream_world.front_default} alt="" />
+                    
+                </div>
                 
-                <h1>{pokemonData?.name}</h1>
-                <img src={pokemonData?.sprites?.other.dream_world.front_default} alt="" />
-                
+                {pokemonData && 
+                                <button onClick={handleReloadComponent}>Reload</button>
+                }
             </div>
-            
-            {pokemonData && 
-                            <button onClick={handleReloadComponent}>Reload</button>
-            }
+
+            <div className={styles.pokemonIndividualCard}>
+                <div className={styles.PokemonDetailsForm}>
+                    <label htmlFor="pokemon">Digite o número do segundoyy pokemon desejado:</label>
+                    <input type="number" id="pokemon" onChange={(e) => setPokemonNumber(e.target.value)} />
+                </div>
+                <div className={styles.pokemonDetailsContent}>
+                    {   
+                        (isLoading && pokemonNumber.length > 0) && <h1>Carregando...</h1>
+                    }
+
+                    
+                    <h1>{pokemonData?.name}</h1>
+                    <img src={pokemonData?.sprites?.other.dream_world.front_default} alt="" />
+                    
+                </div>
+                
+                {pokemonData && 
+                                <button onClick={handleReloadComponent}>Reload</button>
+                }
+            </div>
         </div>
     );
 }

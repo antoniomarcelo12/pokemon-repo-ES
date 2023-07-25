@@ -60,7 +60,7 @@ export function PokemonList() {
             </ul>
 
             {
-                isLoading && <h1>Loading...</h1>
+                isLoading && <h1>Carregando...</h1>
             }
         </div>
     );
