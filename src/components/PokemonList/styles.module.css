@@ -1,0 +1,33 @@
+.pokemonListContainer {
+    height: 100vh;
+}
+
+.pokemonListContainer h1 {
+    font-size: 1.5rem;
+    padding: 3rem;
+    color: #FFF
+}
+
+.pokemonListContainer ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.pokemonListContainer ul li {
+    height: 10rem;
+    width: 13rem;
+
+    background-color: var(--gray-700);
+
+    list-style: none;
+
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

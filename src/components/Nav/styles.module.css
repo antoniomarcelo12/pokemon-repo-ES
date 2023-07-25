@@ -1,0 +1,14 @@
+.navigatorLinks {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    display: flex;
+    gap: 3rem;
+    
+}
+
+.navigatorLinks a {
+    color: #FFF;
+    text-decoration: none;
+
+}

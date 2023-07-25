@@ -1,0 +1,36 @@
+:root { 
+    --gray-700: #29292e;
+    --gray-300: #c4c4cc;
+    --gray-800: #202024;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, input, textarea, button {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+body {
+    background: var(--gray-800);
+    color: var(--gray-300);
+    -webkit-font-smoothing: antialiased;
+
+    height: 100vh;
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+input {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+}
