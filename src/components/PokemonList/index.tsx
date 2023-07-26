@@ -8,7 +8,7 @@ interface PokemonType {
 }
 
 export function PokemonList() {
-    let offset = -20
+    let offset = -40
 
     const [isLoading, setIsLoading] = useState(false)
     const [allPokemons, setAllPokemons] = useState<string[]>([])
@@ -16,12 +16,12 @@ export function PokemonList() {
     
     function getPokemon() {
         offset += 20
-        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${offset}`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`)
             .then(({data}) => {
                 const newPokemons: string[] = []
                 data.results.forEach((pokemon: PokemonType) => newPokemons.push(pokemon.name))
-                
                 setAllPokemons((prevPokemons) => [...prevPokemons, ...newPokemons])
+                
                 setIsLoading(false)
                 
             },
@@ -56,7 +56,7 @@ export function PokemonList() {
                     allPokemons.map((pokemonName, index) => {
                         return(
                             <li key={index}>
-                                {pokemonName}
+                                {`${index+1} - ${pokemonName}`}
                             </li>
                         );
                     })
