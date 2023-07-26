@@ -12,6 +12,7 @@ export function PokemonList() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [allPokemons, setAllPokemons] = useState<string[]>([])
+    const [scrollYPosition, setScrollYPosition] = useState(0)
     
     function getPokemon() {
         offset += 20
@@ -38,13 +39,16 @@ export function PokemonList() {
         }
     }
 
+    function getYAfterScroll() {
+        setScrollYPosition(window.scrollY)
+    }
+
     useEffect(() => {
         getPokemon()
         window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', getYAfterScroll)
     }, []);
 
-    
-    
     return(
         <div className={styles.pokemonListContainer}>
             <ul>
@@ -61,6 +65,10 @@ export function PokemonList() {
 
             {
                 isLoading && <h1>Carregando...</h1>
+            }
+
+            {
+                scrollYPosition > 4000 && <button className={styles.goToTopButton}><a href="#root">Ir para o topo</a></button>
             }
         </div>
     );
